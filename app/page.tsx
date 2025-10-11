@@ -198,31 +198,32 @@ export default function Home() {
     setHeroSrc((prev) => (prev === cloudinarySrc ? "/me.jpg" : unsplashFallback));
   };
 
-  // Skills data
-  const skillsData = [
-    { name: "Python", category: "programming", icon: "🐍" },
-    { name: "Java", category: "programming", icon: "☕" },
-    { name: "C++", category: "programming", icon: "⚡" },
-    { name: "Kotlin", category: ["programming", "mobile"], icon: "📱" },
-    { name: "SQL", category: ["programming", "data_ml"], icon: "🗄️" },
-    { name: "DSA", category: "programming", icon: "🧮" },
-    { name: "Android Studio", category: "mobile", icon: "🤖" },
-    { name: "Firebase", category: "mobile", icon: "🔥" },
-    { name: "RESTful APIs", category: "programming", icon: "🌐" },
-    { name: "Git / GitHub", category: "programming", icon: "📚" },
-    { name: "TensorFlow", category: "data_ml", icon: "🧠" },
-    { name: "Scikit-learn", category: "data_ml", icon: "🔬" },
-    { name: "Pandas", category: "data_ml", icon: "🐼" },
-    { name: "Matplotlib", category: "data_ml", icon: "📊" },
-    { name: "Seaborn", category: "data_ml", icon: "📈" },
-  ];
 
   // Skills functionality
   useEffect(() => {
     const skillsGrid = document.getElementById('skills-grid');
     const skillTabs = document.querySelectorAll('.skill-tab');
     
-    function getSkillHtml(skill: any) {
+    // Skills data moved inside useEffect to avoid dependency issues
+    const skillsData = [
+      { name: "Python", category: "programming", icon: "🐍" },
+      { name: "Java", category: "programming", icon: "☕" },
+      { name: "C++", category: "programming", icon: "⚡" },
+      { name: "Kotlin", category: ["programming", "mobile"], icon: "📱" },
+      { name: "SQL", category: ["programming", "data_ml"], icon: "🗄️" },
+      { name: "DSA", category: "programming", icon: "🧮" },
+      { name: "Android Studio", category: "mobile", icon: "🤖" },
+      { name: "Firebase", category: "mobile", icon: "🔥" },
+      { name: "RESTful APIs", category: "programming", icon: "🌐" },
+      { name: "Git / GitHub", category: "programming", icon: "📚" },
+      { name: "TensorFlow", category: "data_ml", icon: "🧠" },
+      { name: "Scikit-learn", category: "data_ml", icon: "🔬" },
+      { name: "Pandas", category: "data_ml", icon: "🐼" },
+      { name: "Matplotlib", category: "data_ml", icon: "📊" },
+      { name: "Seaborn", category: "data_ml", icon: "📈" },
+    ];
+    
+    function getSkillHtml(skill: { name: string; category: string | string[]; icon: string }) {
       return `
         <div class="group rounded-xl border border-white/10 p-6 bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-pointer text-center" data-categories="${Array.isArray(skill.category) ? skill.category.join(',') : skill.category}">
           <div class="text-4xl mb-3">${skill.icon}</div>
@@ -354,7 +355,14 @@ export default function Home() {
     const prevButton = document.getElementById('prev-slide');
     const nextButton = document.getElementById('next-slide');
 
-    function createProjectSlide(project: any, index: number) {
+    function createProjectSlide(project: {
+      title: string;
+      description: string;
+      features: string[];
+      techStack: Record<string, string | undefined>;
+      images: string[];
+      technologies: string[];
+    }, index: number) {
       return `
         <div class="project-slide ${index === 0 ? 'active' : ''}" data-slide="${index}">
           <div class="grid lg:grid-cols-2 gap-12 items-start">
@@ -425,8 +433,8 @@ export default function Home() {
       const dots = document.querySelectorAll('#slide-dots button');
       
       // Clear any existing feature display
-      if ((window as any).clearFeatureDisplay) {
-        (window as any).clearFeatureDisplay();
+      if ((window as Window & { clearFeatureDisplay?: () => void }).clearFeatureDisplay) {
+        (window as Window & { clearFeatureDisplay?: () => void }).clearFeatureDisplay!();
       }
       
       slides.forEach((slide, index) => {
@@ -460,7 +468,10 @@ export default function Home() {
 
     // Phone screen image rotation
     function rotatePhoneImages() {
-      projectsData.forEach((project, projectIndex) => {
+      projectsData.forEach((project: {
+        title: string;
+        images: string[];
+      }, projectIndex: number) => {
         const phoneImage = document.getElementById(`phone-image-${projectIndex}`);
         if (phoneImage) {
           let imageIndex = 0;
@@ -477,7 +488,9 @@ export default function Home() {
     function displayFeaturesLineByLine(projectIndex: number) {
       const featuresDisplay = document.getElementById(`features-display-${projectIndex}`);
       if (featuresDisplay && projectsData[projectIndex]) {
-        const project = projectsData[projectIndex];
+        const project = projectsData[projectIndex] as {
+          features: string[];
+        };
         let currentLine = 0;
         
         const displayNextLine = () => {
@@ -505,7 +518,7 @@ export default function Home() {
         };
         
         // Store clear function for later use
-        (window as any).clearFeatureDisplay = clearIntervalOnSlideChange;
+        (window as Window & { clearFeatureDisplay?: () => void }).clearFeatureDisplay = clearIntervalOnSlideChange;
       }
     }
 
@@ -598,10 +611,10 @@ export default function Home() {
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">About Me</h2>
           <p className="text-gray-300 text-lg max-w-4xl mx-auto leading-relaxed">
-            Hi, I'm Nikhil Puppalwar, a passionate and detail-oriented Computer Engineering student with a strong interest in mobile app development, data science, and machine learning. I enjoy transforming innovative ideas into real-world applications that create impact and solve meaningful problems.
+            Hi, I&apos;m Nikhil Puppalwar, a passionate and detail-oriented Computer Engineering student with a strong interest in mobile app development, data science, and machine learning. I enjoy transforming innovative ideas into real-world applications that create impact and solve meaningful problems.
           </p>
           <p className="text-gray-300 text-lg max-w-4xl mx-auto leading-relaxed mt-4">
-            I have hands-on experience building Android apps using Kotlin, Firebase, and Cloud services, and I've also worked on projects involving data analysis, predictive modeling, and AI-based solutions. I'm always eager to explore new technologies, contribute to open-source projects, and continuously improve my technical and creative skills.
+            I have hands-on experience building Android apps using Kotlin, Firebase, and Cloud services, and I&apos;ve also worked on projects involving data analysis, predictive modeling, and AI-based solutions. I&apos;m always eager to explore new technologies, contribute to open-source projects, and continuously improve my technical and creative skills.
           </p>
         </div>
       </Section>
@@ -822,7 +835,7 @@ export default function Home() {
       <Section id="contact" className="py-20">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Get In Touch</h2>
-          <p className="text-gray-400 text-lg">Let's connect and work together</p>
+          <p className="text-gray-400 text-lg">Let&apos;s connect and work together</p>
         </div>
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
