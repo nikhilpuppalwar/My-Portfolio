@@ -25,6 +25,26 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Ensure static files are served correctly
+  trailingSlash: false,
+  // Add headers for PDF files
+  async headers() {
+    return [
+      {
+        source: '/certificate/:path*',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/pdf',
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

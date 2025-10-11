@@ -716,7 +716,14 @@ export default function Home() {
             { title: "Android Development", issuer: "Infosys Springboard", date: "2024", file: "Android p -prog.pdf" },
             { title: "Data Science", issuer: "Infosys Springboard", date: "2024", file: "Introduction to Data Science.pdf" },
           ].map((cert, i) => (
-            <div key={i} className="group rounded-xl border border-white/10 p-6 bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-pointer" onClick={() => window.open(`/certificate/${cert.file}`, '_blank')}>
+            <div key={i} className="group rounded-xl border border-white/10 p-6 bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-pointer" onClick={() => {
+              const certificateUrl = `/certificate/${cert.file}`;
+              console.log('Opening certificate:', certificateUrl);
+              const newWindow = window.open(certificateUrl, '_blank');
+              if (!newWindow) {
+                alert('Please allow pop-ups for this site to view certificates');
+              }
+            }}>
               <div className="flex justify-between items-start mb-4">
                 <div className="w-10 h-10 bg-cyan-600 rounded-full flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
