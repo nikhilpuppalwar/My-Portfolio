@@ -31,7 +31,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/certificate/:path*',
+        source: '/certificates/:path*',
         headers: [
           {
             key: 'Content-Type',

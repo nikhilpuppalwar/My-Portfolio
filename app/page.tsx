@@ -301,14 +301,14 @@ export default function Home() {
           "IDE": "Android Studio"
         },
         images: [
-          "/images/laundary mart photo/mart_home.jpg",
-          "/images/laundary mart photo/mart_home_layout.jpg",
-          "/images/laundary mart photo/mart_login.jpg",
-          "/images/laundary mart photo/mart_signup.jpg",
-          "/images/laundary mart photo/mart_pickup.jpg",
-          "/images/laundary mart photo/mart_track.jpg",
-          "/images/laundary mart photo/mart_profile.jpg",
-          "/images/laundary mart photo/mart_service_detail.jpg",
+          "/images/laundary_mart_photo/mart_home.jpg",
+          "/images/laundary_mart_photo/mart_home_layout.jpg",
+          "/images/laundary_mart_photo/mart_login.jpg",
+          "/images/laundary_mart_photo/mart_signup.jpg",
+          "/images/laundary_mart_photo/mart_pickup.jpg",
+          "/images/laundary_mart_photo/mart_track.jpg",
+          "/images/laundary_mart_photo/mart_profile.jpg",
+          "/images/laundary_mart_photo/mart_service_detail.jpg",
         ],
         technologies: ["Android Studio", "Kotlin", "Firebase", "Lottie"]
       },
@@ -336,14 +336,14 @@ export default function Home() {
           "IDE": "Android Studio"
         },
         images: [
-          "/images/argo mart/welcome.jpg",
-          "/images/argo mart/listing.jpg",
-          "/images/argo mart/login main.jpg",
-          "/images/argo mart/login.jpg",
-          "/images/argo mart/home.jpg",
-          "/images/argo mart/cart.jpg",
-          "/images/argo mart/profile.jpg",
-          "/images/argo mart/detail.jpg",
+          "/images/agro_mart/welcome.jpg",
+          "/images/agro_mart/listing.jpg",
+          "/images/agro_mart/login main.jpg",
+          "/images/agro_mart/login.jpg",
+          "/images/agro_mart/home.jpg",
+          "/images/agro_mart/cart.jpg",
+          "/images/agro_mart/profile.jpg",
+          "/images/agro_mart/detail.jpg",
         ],
         technologies: ["Android Studio", "Kotlin", "Firebase", "REST APIs"]
       }
@@ -706,18 +706,18 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { title: "Basics of Python", issuer: "Coding Ninjas", date: "2024", file: "certificate coding ninjas basic python.pdf" },
-            { title: "Programming in Modern C++", issuer: "NPTEL", date: "2024", file: "Programming in Modern C++ Nptel.pdf" },
-            { title: "Introduction to SQL", issuer: "Simplilearn", date: "2024", file: "Introduction to SQL.pdf" },
-            { title: "Introduction to Deep Learning", issuer: "Infosys Springboard", date: "2024", file: "Introduction to Deep Learning.pdf" },
-            { title: "Artificial Intelligence", issuer: "Infosys Springboard", date: "2024", file: "Artificial Intelligence.pdf" },
-            { title: "Computer Vision 101", issuer: "Infosys Springboard", date: "2024", file: "Computer Vision 101.pdf" },
-            { title: "Generative AI", issuer: "Infosys Springboard", date: "2024", file: "Generative AI Unleashing.pdf" },
-            { title: "Android Development", issuer: "Infosys Springboard", date: "2024", file: "Android p -prog.pdf" },
-            { title: "Data Science", issuer: "Infosys Springboard", date: "2024", file: "Introduction to Data Science.pdf" },
+            { title: "Basics of Python", issuer: "Coding Ninjas", date: "2024", file: "certificate_coding_ninjas_basic_python.pdf" },
+            { title: "Programming in Modern C++", issuer: "NPTEL", date: "2024", file: "Programming_in_Modern_C++_Nptel.pdf" },
+            { title: "Introduction to SQL", issuer: "Simplilearn", date: "2024", file: "Introduction_to_SQL.pdf" },
+            { title: "Introduction to Deep Learning", issuer: "Infosys Springboard", date: "2024", file: "Introduction_to_Deep_Learning.pdf" },
+            { title: "Artificial Intelligence", issuer: "Infosys Springboard", date: "2024", file: "Artificial_Intelligence.pdf" },
+            { title: "Computer Vision 101", issuer: "Infosys Springboard", date: "2024", file: "Computer_Vision_101.pdf" },
+            { title: "Generative AI", issuer: "Infosys Springboard", date: "2024", file: "Generative_AI_Unleashing.pdf" },
+            { title: "Android Development", issuer: "Infosys Springboard", date: "2024", file: "Android_p_-prog.pdf" },
+            { title: "Data Science", issuer: "Infosys Springboard", date: "2024", file: "Introduction_to_Data_Science.pdf" },
           ].map((cert, i) => (
             <div key={i} className="group rounded-xl border border-white/10 p-6 bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-pointer" onClick={() => {
-              const certificateUrl = `/certificate/${cert.file}`;
+              const certificateUrl = `/certificates/${cert.file}`;
               console.log('Opening certificate:', certificateUrl);
               const newWindow = window.open(certificateUrl, '_blank');
               if (!newWindow) {
