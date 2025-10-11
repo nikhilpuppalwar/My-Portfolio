@@ -1,26 +1,120 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #e5e7eb;
+  --muted: #1a1a1a;
+  --accent: #27272a;
+  --ring: 214 100% 50%;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+.glass {
+  background: rgba(17, 17, 17, 0.5);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.gradient-bg {
+  background-image: radial-gradient(1000px 500px at 100% 0%, #111827 0%, rgba(17, 24, 39, 0) 60%),
+    radial-gradient(800px 400px at 0% 100%, #0ea5e9 0%, rgba(14, 165, 233, 0) 60%),
+    radial-gradient(600px 300px at 50% 50%, #7c3aed 0%, rgba(124, 58, 237, 0) 60%);
+}
+
+.particle {
+  position: absolute;
+  border-radius: 9999px;
+  opacity: 0.15;
+  filter: blur(2px);
+  animation: float 12s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-15px) translateX(10px);
+  }
+}
+
+/* Scroll progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0ea5e9, #7c3aed);
+  width: 0;
+  z-index: 50;
+}
+
+/* Projects Carousel Styles */
+.project-carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-slide {
+  flex-shrink: 0;
+  width: 100%;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.project-slide.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Mobile Frame Styling */
+.mobile-frame {
+  border: 10px solid #1f2937;
+  border-radius: 3rem;
+  box-shadow: 0 0 0 1px #4b5563, 0 10px 20px rgba(0,0,0,0.5);
+  max-width: 300px;
+  height: 550px;
+  overflow: hidden;
+  background-color: white;
+  position: relative;
+}
+
+/* Console/Code Block Styling */
+.code-console {
+  background-color: #000000;
+  border: 1px solid #06b6d4;
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+  min-height: 550px;
+  color: #d1d5db;
+  font-family: 'Consolas', 'Monaco', monospace;
+  overflow-y: auto;
+}
+
+/* Typing/Line-by-Line Effect */
+.console-line {
+  display: block;
+  white-space: pre-wrap;
+  opacity: 0;
+  animation: line-fade-in 0.5s forwards;
+}
+
+@keyframes line-fade-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
