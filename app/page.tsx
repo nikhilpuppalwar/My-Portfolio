@@ -717,7 +717,7 @@ export default function Home() {
             { title: "Data Science", issuer: "Infosys Springboard", date: "2024", file: "Introduction_to_Data_Science.pdf" },
           ].map((cert, i) => (
             <div key={i} className="group rounded-xl border border-white/10 p-6 bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-pointer" onClick={() => {
-              const certificateUrl = `/certificates/${cert.file}`;
+              const certificateUrl = `./certificates/${cert.file}`;
               console.log('Opening certificate:', certificateUrl);
               const newWindow = window.open(certificateUrl, '_blank');
               if (!newWindow) {
