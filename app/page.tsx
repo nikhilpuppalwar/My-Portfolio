@@ -301,14 +301,14 @@ export default function Home() {
           "IDE": "Android Studio"
         },
         images: [
-          "/images/laundary_mart_photo/mart_home.jpg",
-          "/images/laundary_mart_photo/mart_home_layout.jpg",
-          "/images/laundary_mart_photo/mart_login.jpg",
-          "/images/laundary_mart_photo/mart_signup.jpg",
-          "/images/laundary_mart_photo/mart_pickup.jpg",
-          "/images/laundary_mart_photo/mart_track.jpg",
-          "/images/laundary_mart_photo/mart_profile.jpg",
-          "/images/laundary_mart_photo/mart_service_detail.jpg",
+          "./images/laundary_mart_photo/mart_home.jpg",
+          "./images/laundary_mart_photo/mart_home_layout.jpg",
+          "./images/laundary_mart_photo/mart_login.jpg",
+          "./images/laundary_mart_photo/mart_signup.jpg",
+          "./images/laundary_mart_photo/mart_pickup.jpg",
+          "./images/laundary_mart_photo/mart_track.jpg",
+          "./images/laundary_mart_photo/mart_profile.jpg",
+          "./images/laundary_mart_photo/mart_service_detail.jpg",
         ],
         technologies: ["Android Studio", "Kotlin", "Firebase", "Lottie"]
       },
