@@ -815,7 +815,7 @@ export default function Home() {
               <p className="text-gray-400 mb-6">View my complete resume and professional documents</p>
               <div className="space-y-4">
                 <button 
-                  onClick={() => window.open('./Nikhil_Puppalwar4.3.pdf', '_blank')}
+                  onClick={() => window.open('./Nikhil_resume_5.1.pdf', '_blank')}
                   className="w-full px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors flex items-center justify-center"
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
